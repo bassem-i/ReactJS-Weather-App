@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import weatherActions from "./actions/weatherActions";
 import LoadingScreen from "./components/LoadingScreen";
+import WeatherGrid from "./components/WeatherGrid";
 
 class WeatherApp extends React.Component {
   componentDidMount() {
@@ -11,12 +12,11 @@ class WeatherApp extends React.Component {
 
   render() {
     const {
-      weatherReducer: { pending, res }
+      weatherReducer: { pending, data }
     } = this.props;
 
     if (pending) return <LoadingScreen />;
-
-    return <>WeatherApp</>;
+    return <WeatherGrid weatherData={data} />;
   }
 }
 

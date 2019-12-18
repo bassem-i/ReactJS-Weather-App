@@ -2,7 +2,7 @@ import WEATHER_ACTIONS from "../actions/types";
 
 const initialState = {
   pending: false,
-  res: {},
+  data: {},
   err: {}
 };
 
@@ -17,7 +17,7 @@ export default function weatherReducer(state = initialState, action) {
       return {
         ...state,
         pending: false,
-        res: action.payload
+        data: action.payload
       };
     case WEATHER_ACTIONS.FETCH_FAILURE:
       return {
