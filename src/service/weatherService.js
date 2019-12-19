@@ -8,14 +8,19 @@ function formatWeatherInfo(weatherData) {
 
       weatherMap[date] = {
         weather: segment.weather[0].main,
-        tempArr: weatherMap[date] ? [...weatherMap[date].tempArr] : []
+        tempArr: weatherMap[date] ? [...weatherMap[date].tempArr] : [],
+        humidityArr: weatherMap[date] ? [...weatherMap[date].humidityArr] : []
       };
       weatherMap[date].tempArr.push(segment.main.temp);
+      weatherMap[date].humidityArr.push(segment.main.humidity);
       weatherMap[date] = {
         ...weatherMap[date],
         avgTemp:
           weatherMap[date].tempArr.reduce((acc, item) => acc + item, 0) /
-          weatherMap[date].tempArr.length
+          weatherMap[date].tempArr.length,
+        avgHumidity:
+          weatherMap[date].humidityArr.reduce((acc, item) => acc + item, 0) /
+          weatherMap[date].humidityArr.length
       };
     }
 

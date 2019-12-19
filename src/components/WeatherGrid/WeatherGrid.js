@@ -1,6 +1,7 @@
 import React from "react";
 import Grid from "@material-ui/core/Grid";
 import weatherService from "../../service/weatherService";
+import WeatherCard from "../WeatherCard";
 
 function WeatherGrid({ weatherData }) {
   const weatherInfo = weatherService.formatWeatherInfo(weatherData);
@@ -10,9 +11,7 @@ function WeatherGrid({ weatherData }) {
       <Grid container justify="center" spacing={3}>
         {Object.keys(weatherInfo).map((key, i) => (
           <Grid key={i} item>
-            <p>{key}</p>
-            <p>{weatherInfo[key].weather}</p>
-            <p>{weatherInfo[key].avgTemp.toFixed(1)}</p>
+            <WeatherCard date={key} weather={weatherInfo[key]} />
           </Grid>
         ))}
       </Grid>
