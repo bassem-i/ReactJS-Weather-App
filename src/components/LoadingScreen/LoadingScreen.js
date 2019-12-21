@@ -1,19 +1,25 @@
 import React from "react";
-import styled from "styled-components";
+import { makeStyles } from "@material-ui/core/styles";
 
-const LoadingScreenDiv = styled.div`
-  height: 100vh;
-  position: relative;
-  p {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+const useStyles = makeStyles({
+  root: {
+    height: "100vh",
+    position: "relative",
+    "& p": {
+      position: "absolute",
+      top: "50%",
+      left: "50%",
+      transform: "translate(-50%, -50%)"
+    }
   }
-`;
+});
 
-export default () => (
-  <LoadingScreenDiv>
-    <p>Loading...</p>
-  </LoadingScreenDiv>
-);
+export default () => {
+  const classes = useStyles();
+
+  return (
+    <div className={classes.root}>
+      <p>Loading...</p>
+    </div>
+  );
+};

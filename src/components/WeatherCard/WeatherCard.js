@@ -15,7 +15,7 @@ const useStyles = makeStyles({
 
 const WeatherCard = ({ date, weather }) => {
   const classes = useStyles();
-  console.log(date, weather);
+
   return (
     <Card className={classes.card}>
       <CardContent>

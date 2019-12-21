@@ -1,44 +1,44 @@
 import React from "react";
-import styled from "styled-components";
+import { makeStyles } from "@material-ui/core/styles";
 
-const HeaderStyled = styled.header`
-  position: relative;
-  img {
-    width: 100%;
-    height: 100vh;
-  }
-
-  .splash-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.65);
-  }
-
-  .splash-content {
-    top: 50%;
-    left: 50%;
-    position: absolute;
-    transform: translate(-50%, -50%);
-
-    h1 {
-      color: white;
-      font-size: 7rem;
+const useStyles = makeStyles(theme => ({
+  root: {
+    position: "relative",
+    "& img": {
+      width: "100%",
+      height: "100vh"
+    }
+  },
+  splashOverlay: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    backgroundColor: "rgba(0, 0, 0, 0.65)"
+  },
+  splashContent: {
+    top: "50%",
+    left: "50%",
+    position: "absolute",
+    transform: "translate(-50%, -50%)",
+    "& h1": {
+      color: "white",
+      fontSize: "7rem"
     }
   }
-`;
+}));
 
 const Header = () => {
+  const classes = useStyles();
   return (
-    <HeaderStyled>
+    <header className={classes.root}>
       <img src={require("../../assets/header.jpg")} alt="header"></img>
-      <div className="splash-overlay"></div>
-      <div className="splash-content">
+      <div className={classes.splashOverlay}></div>
+      <div className={classes.splashContent}>
         <h1>Munich Weather</h1>
       </div>
-    </HeaderStyled>
+    </header>
   );
 };
 
