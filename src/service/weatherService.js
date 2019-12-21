@@ -27,6 +27,18 @@ function formatWeatherInfo(weatherData) {
   return weatherMap;
 }
 
+function convertTempTo(unit, value) {
+  if (unit === "Fahrenheit") {
+    return (value - 273.15) * 1.8 + 32;
+  }
+  if (unit === "Celcius") {
+    return value - 273.15;
+  }
+
+  return value;
+}
+
 export default {
-  formatWeatherInfo
+  formatWeatherInfo,
+  convertTempTo
 };
