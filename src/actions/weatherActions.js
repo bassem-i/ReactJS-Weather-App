@@ -1,4 +1,5 @@
 import ApiService from "../service/apiService";
+import weatherService from "../service/weatherService";
 import WEATHER_ACTIONS from "./types";
 
 function getWeatherInfo() {
@@ -6,7 +7,10 @@ function getWeatherInfo() {
     dispatch({ type: WEATHER_ACTIONS.FETCH_REQUEST });
     ApiService.getWeatherInfo()
       .then(res => {
-        dispatch({ type: WEATHER_ACTIONS.FETCH_SUCCESS, payload: res.data });
+        dispatch({
+          type: WEATHER_ACTIONS.FETCH_SUCCESS,
+          payload: weatherService.formatWeatherInfo(res.data)
+        });
       })
       .catch(err => {
         dispatch({ type: WEATHER_ACTIONS.FETCH_FAILURE, payload: err });

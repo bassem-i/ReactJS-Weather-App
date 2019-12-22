@@ -14,7 +14,7 @@ const useStyles = makeStyles({
   }
 });
 
-const WeatherCard = ({ date, weather, unit }) => {
+const WeatherCard = ({ day, unit }) => {
   const classes = useStyles();
 
   return (
@@ -25,17 +25,16 @@ const WeatherCard = ({ date, weather, unit }) => {
           color="textSecondary"
           gutterBottom
         >
-          {date}
+          {day.date}
         </Typography>
         <Typography variant="h5" component="h2">
-          {weather.weather}
+          {day.weather}
         </Typography>
         <Typography variant="body2" component="p">
-          Avg Temp:{" "}
-          {weatherService.convertTempTo(unit, weather.avgTemp).toFixed(1)}{" "}
+          Avg Temp: {weatherService.convertTempTo(unit, day.avgTemp).toFixed(1)}{" "}
           {unit}
           <br />
-          Avg Humidity: {weather.avgHumidity.toFixed(1)}
+          Avg Humidity: {day.avgHumidity}
         </Typography>
       </CardContent>
     </Card>

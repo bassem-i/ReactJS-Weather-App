@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { ArrowBack, ArrowForward } from "@material-ui/icons";
 import { Grid, Button, Radio, FormControlLabel } from "@material-ui/core";
-import weatherService from "../../service/weatherService";
 import WeatherCard from "../WeatherCard";
+import BarChart from "../BarChart";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -19,7 +19,7 @@ function WeatherGrid({ weatherData }) {
   const classes = useStyles();
   const [offset, setOffset] = useState(0);
   const [tempUnit, setTempUnit] = React.useState("Fahrenheit");
-  const weatherInfo = weatherService.formatWeatherInfo(weatherData);
+  const [selectedDay, setSelectedDay] = React.useState({});
 
   return (
     <Grid item xs={12} className={classes.root}>
@@ -62,25 +62,20 @@ function WeatherGrid({ weatherData }) {
         <Grid item>
           <Button
             onClick={() => setOffset(offset + 1)}
-            disabled={offset + PAGE_SIZE === Object.keys(weatherInfo).length}
+            disabled={offset + PAGE_SIZE === weatherData.length}
           >
             <ArrowForward fontSize="large" />
           </Button>
         </Grid>
       </Grid>
       <Grid container justify="center" spacing={3} className={classes.grid}>
-        {Object.keys(weatherInfo)
-          .slice(offset, offset + PAGE_SIZE)
-          .map((key, i) => (
-            <Grid key={i} item>
-              <WeatherCard
-                date={key}
-                unit={tempUnit}
-                weather={weatherInfo[key]}
-              />
-            </Grid>
-          ))}
+        {weatherData.slice(offset, offset + PAGE_SIZE).map((day, i) => (
+          <Grid key={i} item onClick={() => setSelectedDay(day)}>
+            <WeatherCard unit={tempUnit} day={day} />
+          </Grid>
+        ))}
       </Grid>
+      {/* {Object.keys(selectedDay).length !== 0 && <BarChart day={selectedDay} />} */}
     </Grid>
   );
 }

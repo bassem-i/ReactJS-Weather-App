@@ -1,30 +1,47 @@
 function formatWeatherInfo(weatherData) {
-  let weatherMap = {};
+  const formattedWeatherData = [];
 
-  if (weatherData && weatherData.list)
-    for (let i = 0; i < weatherData.list.length; i++) {
-      const segment = weatherData.list[i];
-      const date = segment.dt_txt.split(" ")[0];
+  // Fromat the response to be an array of days instead
+  for (let i = 0; i < weatherData.list.length; i++) {
+    const segment = weatherData.list[i];
+    const date = segment.dt_txt.split(" ")[0];
+    const hour = segment.dt_txt.split(" ")[1];
 
-      weatherMap[date] = {
+    const day = formattedWeatherData.find(item => item.date === date);
+    if (day) {
+      day.segments.push({
+        hour: hour,
+        temp: segment.main.temp,
+        humidity: segment.main.humidity
+      });
+    } else {
+      formattedWeatherData.push({
+        date: date,
         weather: segment.weather[0].main,
-        tempArr: weatherMap[date] ? [...weatherMap[date].tempArr] : [],
-        humidityArr: weatherMap[date] ? [...weatherMap[date].humidityArr] : []
-      };
-      weatherMap[date].tempArr.push(segment.main.temp);
-      weatherMap[date].humidityArr.push(segment.main.humidity);
-      weatherMap[date] = {
-        ...weatherMap[date],
-        avgTemp:
-          weatherMap[date].tempArr.reduce((acc, item) => acc + item, 0) /
-          weatherMap[date].tempArr.length,
-        avgHumidity:
-          weatherMap[date].humidityArr.reduce((acc, item) => acc + item, 0) /
-          weatherMap[date].humidityArr.length
-      };
+        segments: [
+          {
+            hour: hour,
+            temp: segment.main.temp,
+            humidity: segment.main.humidity
+          }
+        ]
+      });
     }
+  }
 
-  return weatherMap;
+  // Compute the average temperature & humidity
+  formattedWeatherData.forEach(day => {
+    day.avgTemp = (
+      day.segments.reduce((acc, item) => acc + item.temp, 0) /
+      day.segments.length
+    ).toFixed(1);
+    day.avgHumidity = (
+      day.segments.reduce((acc, item) => acc + item.humidity, 0) /
+      day.segments.length
+    ).toFixed(1);
+  });
+
+  return formattedWeatherData;
 }
 
 function convertTempTo(unit, value) {

@@ -2,7 +2,7 @@ import WEATHER_ACTIONS from "../actions/types";
 
 const initialState = {
   pending: false,
-  data: {},
+  data: [],
   err: {}
 };
 
