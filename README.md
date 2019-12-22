@@ -9,5 +9,5 @@ This project could be improved in a multiple of ways :
 2. Unit tests.
 3. City selector at the start to specify cities other than Munich.
 4. Date range selector at the start.
-5. Show more information like a humidaty graph.
+5. Show more information like a humidity graph.
 6. Have more visuals ( Rain icons on rainy days or sun icons on sunny days ).
