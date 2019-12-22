@@ -2,7 +2,6 @@ import React from "react";
 import { connect } from "react-redux";
 import weatherActions from "./actions/weatherActions";
 import Header from "./components/Header";
-import LoadingScreen from "./components/LoadingScreen";
 import WeatherGrid from "./components/WeatherGrid";
 
 class WeatherApp extends React.Component {
