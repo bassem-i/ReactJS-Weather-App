@@ -1,11 +1,19 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import { BarChart, XAxis, YAxis, Tooltip, Legend, Bar } from "recharts";
+import {
+  ResponsiveContainer,
+  BarChart,
+  XAxis,
+  YAxis,
+  Tooltip,
+  Legend,
+  Bar
+} from "recharts";
 import weatherService from "../../service/weatherService";
 
 const useStyles = makeStyles(theme => ({
-  root: {
-    margin: "2rem auto"
+  container: {
+    margin: "0 auto"
   }
 }));
 
@@ -15,15 +23,24 @@ const BarChartComp = ({ day, unit }) => {
     name: item.hour,
     temp: weatherService.convertTempTo(unit, item.temp).toFixed(1)
   }));
+
   if (day)
     return (
-      <BarChart width={730} height={250} className={classes.root} data={data}>
-        <XAxis dataKey="name" />
-        <YAxis />
-        <Tooltip />
-        <Legend />
-        <Bar dataKey="temp" fill="#0a2331" />
-      </BarChart>
+      <div style={{ width: "100%", height: 300 }}>
+        <ResponsiveContainer
+          className={classes.container}
+          height="80%"
+          width={700}
+        >
+          <BarChart data={data}>
+            <XAxis dataKey="name" />
+            <YAxis />
+            <Tooltip />
+            <Legend />
+            <Bar dataKey="temp" fill="#0a2331" />
+          </BarChart>
+        </ResponsiveContainer>
+      </div>
     );
 
   return "";

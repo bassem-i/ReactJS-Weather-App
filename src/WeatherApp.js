@@ -16,10 +16,10 @@ class WeatherApp extends React.Component {
       weatherReducer: { pending, data }
     } = this.props;
 
-    if (pending) return <LoadingScreen />;
+    if (pending) return <Header text="Loading.." />;
     return (
       <>
-        <Header />
+        <Header text="Weather App" />
         <WeatherGrid weatherData={data} />
       </>
     );

@@ -29,14 +29,14 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const Header = () => {
+const Header = ({ text }) => {
   const classes = useStyles();
   return (
     <header className={classes.root}>
       <img src={require("../../assets/header.jpg")} alt="header"></img>
       <div className={classes.splashOverlay}></div>
       <div className={classes.splashContent}>
-        <h1>Munich Weather</h1>
+        <h1>{text}</h1>
       </div>
     </header>
   );

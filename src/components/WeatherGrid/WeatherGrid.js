@@ -76,7 +76,9 @@ function WeatherGrid({ weatherData }) {
         ))}
       </Grid>
       {Object.keys(selectedDay).length !== 0 && (
-        <BarChart day={selectedDay} unit={tempUnit} />
+        <Grid container justify="center" spacing={3} className={classes.grid}>
+          <BarChart day={selectedDay} unit={tempUnit} />
+        </Grid>
       )}
     </Grid>
   );
