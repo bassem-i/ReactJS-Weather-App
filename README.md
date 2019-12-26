@@ -17,7 +17,7 @@ Before you begin, ensure you have met the following requirements:
 * You have installed node
 * You have installed npm
 
-## Installing <project_name>
+## Installing ReactJS Weather App
 
 To install ReactJS Weather App, follow these steps:
 
@@ -25,7 +25,7 @@ To install ReactJS Weather App, follow these steps:
 2. Open terminal in the project's folder
 3. run `npm install`
 
-## Using <project_name>
+## Using ReactJS Weather App
 
 To use ReactJS Weather App, follow these steps:
 
