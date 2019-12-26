@@ -6,7 +6,7 @@
 ![GitHub contributors](https://img.shields.io/github/contributors/bassemmohamed/ReactJS-Weather-App)
 ![GitHub stars](https://img.shields.io/github/stars/bassemmohamed/ReactJS-Weather-App?style=social)
 ![GitHub forks](https://img.shields.io/github/forks/bassemmohamed/ReactJS-Weather-App?style=social)
-![Twitter Follow](https://img.shields.io/twitter/follow/bassemmohamed94?style=social)
+![https://twitter.com/intent/follow?screen_name=bassemmohamed94](https://img.shields.io/twitter/follow/bassemmohamed94?style=social)
 
 Project name is a ReactJS Weather App that allows user to check detailed weather information. It is also live at https://reactjs-weather-app.netlify.com/ using [Netlify](https://www.netlify.com).
 
